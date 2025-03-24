@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Fitting Room App</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Add FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Virtual Fitting Room</h1>
+        
+        <!-- Step indicators -->
+        <div class="steps-indicator">
+            <div class="step active">
+                <div class="step-number">1</div>
+                <div class="step-label">Choose Model</div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-label">Upload Clothing</div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-label">Generate Look</div>
+            </div>
+        </div>
+        
+        <div class="selection-container">
+            <div class="selection-box">
+                <h2>Select a Model</h2>
+                <div class="selection-options">
+                    <div class="option-group">
+                        <label for="gender-select">Gender:</label>
+                        <select id="gender-select">
+                            <option value="">Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+                    
+                    <div class="option-group">
+                        <label for="age-select">Age Group:</label>
+                        <select id="age-select" disabled>
+                            <option value="">Select Age Group</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div id="models-container" class="models-grid"></div>
+            </div>
+            
+            <div class="selection-box">
+                <h2>Upload Clothing</h2>
+                <div class="upload-section">
+                    <div class="upload-box">
+                        <label for="upper-garment">Upper Garment:</label>
+                        <input type="file" id="upper-garment" accept="image/*">
+                        <label for="upper-garment" class="file-input-button">
+                            <i class="fas fa-tshirt"></i> Choose Upper Garment
+                            <span>Select a shirt, t-shirt, jacket, etc.</span>
+                        </label>
+                        <div id="upper-preview" class="preview"></div>
+                    </div>
+                    
+                    <div class="upload-box">
+                        <label for="lower-garment">Lower Garment:</label>
+                        <input type="file" id="lower-garment" accept="image/*">
+                        <label for="lower-garment" class="file-input-button">
+                            <i class="fas fa-socks"></i> Choose Lower Garment
+                            <span>Select pants, skirt, shorts, etc.</span>
+                        </label>
+                        <div id="lower-preview" class="preview"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="result-section">
+            <div class="selection-summary">
+                <h2>Your Selection</h2>
+                <div class="summary-container">
+                    <div id="selected-model-container" class="summary-item">
+                        <h3><i class="fas fa-user"></i> Model</h3>
+                        <div id="selected-model" class="summary-image">
+                            <p>No model selected</p>
+                        </div>
+                    </div>
+                    
+                    <div id="selected-upper-container" class="summary-item">
+                        <h3><i class="fas fa-tshirt"></i> Upper Garment</h3>
+                        <div id="selected-upper" class="summary-image">
+                            <p>No upper garment selected</p>
+                        </div>
+                    </div>
+                    
+                    <div id="selected-lower-container" class="summary-item">
+                        <h3><i class="fas fa-socks"></i> Lower Garment</h3>
+                        <div id="selected-lower" class="summary-image">
+                            <p>No lower garment selected</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button id="generate-btn" class="generate-btn" disabled>
+                <i class="fas fa-magic"></i> Generate Look
+            </button>
+            
+            <div id="loading" class="loading-spinner hidden">
+                <div class="spinner"></div>
+                <p>Creating your virtual outfit...</p>
+            </div>
+            
+            <div id="result-container" class="hidden">
+                <h2>Your Virtual Look</h2>
+                <div id="generated-image"></div>
+                <p class="result-note">This is a digitally generated image of how your selected clothing might look on the chosen model.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html> 
